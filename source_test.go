@@ -36,3 +36,8 @@ func TestSourceMap(t *testing.T) {
 func TestSourceUrl(t *testing.T) {
 	testSrc(t, SourceUrl(url.Values{"key": []string{"value"}}))
 }
+
+func TestSourceNil(t *testing.T) {
+	_, err := SourceNil().Get("missing")
+	assertEqual(t, ErrSourceKeyNotFound, err)
+}

@@ -14,17 +14,19 @@ type Source interface {
 	Get(key string) (string, error)
 }
 
-type sourceEnv struct{}
+type SourceFunc func(key string) (string, error)
 
-func SourceEnv() Source {
-	return &sourceEnv{}
+func (src SourceFunc) Get(key string) (string, error) {
+	return src(key)
 }
 
-func (sourceEnv) Get(key string) (string, error) {
-	if val, exists := os.LookupEnv(key); exists {
-		return val, nil
-	}
-	return "", ErrSourceKeyNotFound
+func SourceEnv() Source {
+	return SourceFunc(func(key string) (string, error) {
+		if val, exists := os.LookupEnv(key); exists {
+			return val, nil
+		}
+		return "", ErrSourceKeyNotFound
+	})
 }
 
 type SourceMap map[string]string
@@ -45,4 +47,10 @@ func SourceUrl(values url.Values) Source {
 		m[k] = v[0]
 	}
 	return m
+}
+
+func SourceNil() Source {
+	return SourceFunc(func(key string) (string, error) {
+		return "", ErrSourceKeyNotFound
+	})
 }
