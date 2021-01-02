@@ -1,0 +1,4 @@
+github.com/shopspring/decimal v1.2.0 h1:abSATXmQEYyShuxI4/vyW3tV1MrKAJzCZ/0zLUXYbsQ=
+github.com/shopspring/decimal v1.2.0/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFRcu2hWCYk4o=
+github.com/tim-oster/structparse v0.0.0-20210102100231-6e7ca6253124 h1:7ro24TAEDugnILfX2EJY2uGCv/DS1Fg53Q/a+CuUnbw=
+github.com/tim-oster/structparse v0.0.0-20210102100231-6e7ca6253124/go.mod h1:s3hQt1dH5GfjAGJW0D+IgCGcsw5be6PYIjZcGyN5LmY=
